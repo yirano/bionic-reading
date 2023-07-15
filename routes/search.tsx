@@ -9,7 +9,7 @@ interface Data {
 export const handler: Handlers<Data> = {
   GET(req, ctx) {
     const url = new URL(req.url);
-    const query = url.searchParams.get("q") || "";
+    const query = url.searchParams.get("v") || "";
     const results = NAMES.filter((name) => name.includes(query));
 
     return ctx.render({ results, query });
@@ -21,7 +21,7 @@ export default function Page({ data }: PageProps<Data>) {
   return (
     <div>
       <form>
-        <input type="text" name="q" value={query} />
+        <input type="text" name="v" value={query} />
         <button type="submit">Search</button>
       </form>
       <ul>
