@@ -12,7 +12,7 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
+    <div class="pb-12">
       <Menu />
       <main class="px-8">{children}</main>
     </div>

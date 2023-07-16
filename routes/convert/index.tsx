@@ -13,8 +13,13 @@ export const handler: Handlers = {
     if (!rapidapi) {
       throw new Error("Can't retrieve API Key");
     }
+
+    const requestBody = await req.text();
+    const formData = new URLSearchParams(requestBody);
+    const content = formData.get("content") || "";
+
     const encodedParams = new URLSearchParams();
-    encodedParams.set("content", "Hello, my name is Yirang");
+    encodedParams.set("content", content);
     encodedParams.set("response_type", "html");
     encodedParams.set("request_type", "html");
     encodedParams.set("fixation", "1");
@@ -41,23 +46,20 @@ export const handler: Handlers = {
 
 export default function Convert({ data }: PageProps<ResponseData>) {
   const style =
-    `<style>.bionic-reader-container { color: red; }</style>${data.body}`;
+    `<style>.bionic-reader-container { font-size: 20px; letter-spacing: 1px; font-family: Arial; } .bionic-b {font-weight: 700;}</style>${data.body}`;
   const [render, setRender] = useState(style);
-  const handleSubmit = (event: Event) => {
-    event.preventDefault();
-  };
   return (
     <Layout>
-      <form method="POST" onSubmit={handleSubmit}>
+      <form method="POST" action="/convert">
         <textarea
           name="content"
           rows={10}
-          class="w-11/12 border-1 rounded-sm"
+          class="w-full border-1 rounded-sm p-6"
         />
         <button type="submit">Submit</button>
       </form>
       <iframe
-        class="text-xl"
+        class="border-1 drop-shadow-md mt-12 p-4"
         srcDoc={render}
         style={{ width: "100%", height: "500px" }}
       />
