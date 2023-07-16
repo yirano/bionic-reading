@@ -46,7 +46,7 @@ export const handler: Handlers = {
 
 export default function Convert({ data }: PageProps<ResponseData>) {
   const style =
-    `<style>.bionic-reader-container { font-size: 20px; letter-spacing: 1px; font-family: Arial; } .bionic-b {font-weight: 700;}</style>${data?.body}`;
+    `<style>.bionic-reader-container { font-size: 20px; line-height: 29px; letter-spacing: 1px; font-family: Arial; } .bionic-b {font-weight: 700;}</style>${data?.body}`;
   const [render, setRender] = useState(style);
   return (
     <Layout>
