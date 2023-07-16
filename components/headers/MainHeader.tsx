@@ -1,13 +1,8 @@
-import { ComponentChildren } from "preact";
+import { HeaderProps } from "../../types/types.ts";
 
-type LayoutProps = {
-  children: ComponentChildren;
-  childClass?: string | "";
-};
-
-export default function MainHeader({ children, childClass }: LayoutProps) {
+export default function MainHeader({ children, customClass }: HeaderProps) {
   return (
-    <h1 class={`text-xl font-bold uppercase tracking-wider ${childClass}`}>
+    <h1 class={`text-3xl font-bold uppercase tracking-wider ${customClass}`}>
       {children}
     </h1>
   );
