@@ -1,11 +1,12 @@
 import Layout from "../components/Layout.tsx";
+import MainHeader from "../components/headers/MainHeader.tsx";
 
 export default function AboutPage() {
   return (
     <Layout>
-      <div>
-        <h1>About Bionic Reader</h1>
-      </div>
+      <MainHeader childClass="text-center">
+        About Bionic Reader
+      </MainHeader>
     </Layout>
   );
 }
