@@ -1,4 +1,4 @@
-import AboutPage from "../components/AboutPage.tsx";
+import AboutPage from "../islands/AboutPage.tsx";
 
 export default function About() {
   return <AboutPage />;

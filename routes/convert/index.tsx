@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { useState } from "preact/hooks";
 import "$std/dotenv/load.ts";
-import Layout from "../../islands/Layout.tsx";
+import Layout from "../../components/Layout.tsx";
 
 interface ResponseData {
   body: string;
@@ -46,7 +46,7 @@ export const handler: Handlers = {
 
 export default function Convert({ data }: PageProps<ResponseData>) {
   const style =
-    `<style>.bionic-reader-container { font-size: 20px; letter-spacing: 1px; font-family: Arial; } .bionic-b {font-weight: 700;}</style>${data.body}`;
+    `<style>.bionic-reader-container { font-size: 20px; letter-spacing: 1px; font-family: Arial; } .bionic-b {font-weight: 700;}</style>${data?.body}`;
   const [render, setRender] = useState(style);
   return (
     <Layout>
@@ -58,11 +58,14 @@ export default function Convert({ data }: PageProps<ResponseData>) {
         />
         <button type="submit">Submit</button>
       </form>
-      <iframe
-        class="border-1 drop-shadow-md mt-12 p-4"
-        srcDoc={render}
-        style={{ width: "100%", height: "500px" }}
-      />
+      {data?.body &&
+        (
+          <iframe
+            class="border-1 drop-shadow-md mt-12 p-4"
+            srcDoc={render}
+            style={{ width: "100%", height: "500px" }}
+          />
+        )}
     </Layout>
   );
 }

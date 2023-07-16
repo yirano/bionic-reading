@@ -1,7 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import { useSignal } from "@preact/signals";
-import Menu from "../islands/Menu.tsx";
-import Layout from "../islands/Layout.tsx";
+import Layout from "../components/Layout.tsx";
 
 export default function Home() {
   return (
