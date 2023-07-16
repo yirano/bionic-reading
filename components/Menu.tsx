@@ -1,7 +1,6 @@
 export default function Menu() {
   const links = [
     { title: "Convert", url: "/convert" },
-    { title: "About", url: "/about" },
   ];
   return (
     <div class="py-4 px-8 flex justify-between">
